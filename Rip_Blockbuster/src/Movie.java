@@ -14,7 +14,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Creates a panel for movie poster picture, title, director, genre, lead actor, and rating
+ * Creates a panel for movie poster picture, title, director, genre, lead actor, rating, and number of inventory
  * @author laurenblatchford
  *
  */
@@ -22,18 +22,21 @@ public class Movie {
 	private static JPanel moviePanel;
 	private JPanel imagePanel;
 	private JPanel infoPanel;
+	private int quantityInt;
 	private String picurlString;
 	private String titleString;
 	private String directorString;
 	private String genreString;
 	private String actorString;
 	private String ratingString;
+	private String quantityString;
 	private JLabel movieImgLabel;
 	private JLabel titleLabel;
 	private JLabel directorLabel;
 	private JLabel genreLabel;
 	private JLabel actorLabel;
 	private JLabel ratingLabel;
+	private JLabel quantityLabel;
 	private BufferedImage moviePoster;
 	private Image moviePosterScaled;
 	private URL moviePosterURL;
@@ -43,7 +46,7 @@ public class Movie {
 	
 	
 	/**
-	 * Takes the picture url, title, director, genre, actor, and that will be generated from the database, and sets up
+	 * Takes the picture url, title, director, genre, actor, rating, and stock, and that will be generated from the database, and sets up
 	 * a panel for the poster image to the left, and the movie info to the right. 
 	 * 
 	 * @param picurl - The String containing the URL of the movie poster
@@ -52,8 +55,9 @@ public class Movie {
 	 * @param genre - The String of the genre
 	 * @param actor - The String of the actor
 	 * @param rating - The String of the rating
+	 * @param quantity - The integer of how many movies the store has in stock
 	 */
-	public Movie(String picurl, String title, String director, String genre, String actor, String rating){
+	public Movie(String picurl, String title, String director, String genre, String actor, String rating, int quantity){
 		//Assign arguments to variables.
 		picurlString = picurl;
 		titleString = title;
@@ -61,6 +65,8 @@ public class Movie {
 		genreString = genre;
 		actorString = actor;
 		ratingString = rating;
+		quantityInt = quantity;
+		quantityString = Integer.toString(quantityInt);
 		
 		//Get the URL from the picture URL String
 		try{
@@ -82,6 +88,7 @@ public class Movie {
 		genreLabel = new JLabel("Genre: " + genreString);
 		actorLabel = new JLabel("Star: " + actorString);
 		ratingLabel = new JLabel("Rating: " + ratingString);
+		quantityLabel = new JLabel("In stock: " + quantityString);
 		
 		//Change Label fonts
 		font = new Font("Calisto MT", Font.BOLD, 12);
@@ -90,11 +97,13 @@ public class Movie {
 		genreLabel.setForeground(Color.white);
 		actorLabel.setForeground(Color.white);
 		ratingLabel.setForeground(Color.white);
+		quantityLabel.setForeground(Color.white);
 		titleLabel.setFont(font);
 		directorLabel.setFont(font);
 		genreLabel.setFont(font);
 		actorLabel.setFont(font);
 		ratingLabel.setFont(font);
+		quantityLabel.setFont(font);
 		
 		//Create Panels
 		moviePanel = new JPanel();
@@ -113,6 +122,7 @@ public class Movie {
 		infoPanel.add(genreLabel);
 		infoPanel.add(actorLabel);
 		infoPanel.add(ratingLabel);
+		infoPanel.add(quantityLabel);
 		
 		//Add image panel and info panel to main panel
 		moviePanel.add(imagePanel);
@@ -126,9 +136,4 @@ public class Movie {
 	public static JPanel getPanel(){
 		return moviePanel;
 	}
-
-	public static void main(String[] args) {
-
-	}
-
 }
