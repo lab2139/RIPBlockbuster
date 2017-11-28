@@ -14,28 +14,48 @@ import javax.swing.border.EmptyBorder;
 /**
  * Creates the panel for registering. 
  * Press "Go" to register your account
+ * Press "Back" to go back to the login page
  * @author laurenblatchford
  *
  */
 public class Register {
 	private static JPanel everythingPanel;
+	private JPanel welcomePanel;
 	private JPanel namePanel;
 	private JPanel emailPanel;
 	private JPanel passwordPanel;
 	private JPanel buttonPanel;
+	private JLabel welcomeLabel;
+	private JLabel nameLabel;
 	private JLabel emailLabel;
 	private JLabel passwordLabel;
+	private JTextField enterName;
 	private JTextField enterEmail;
 	private JTextField enterPassword;
 	private JButton go;
 	private JButton back;
 	private Font font;
+	private Font welcomeFont;
 	
-	
+	/**
+	 * Creates a "Welcome!" text at the top of the screen
+	 * adds "Enter your name" with a textfield
+	 * adds "Enter your email address" with a textfield
+	 * adds "Create a password" with a textfield
+	 * adds "Go" button to register your account and bring you to the home page
+	 * adds "Back" button to go back to the login page
+	 */
 	public Register(){
-		//Creates labels for email and password text shown. 
+		//Creates labels for name, email and password text shown. 
 		//Sets the font to Calisto MT, white.
-		font = new Font("Calisto MT", Font.ITALIC, 18);
+		welcomeFont = new Font("Calisto MT", Font.ITALIC, 30);
+		welcomeLabel = new JLabel("Welcome!");
+		welcomeLabel.setForeground(Color.WHITE);
+		welcomeLabel.setFont(welcomeFont);
+		font = new Font("Calisto MT", Font.ITALIC, 18);		
+		nameLabel = new JLabel("Enter your name");
+		nameLabel.setForeground(Color.WHITE);
+		nameLabel.setFont(font);
 		emailLabel = new JLabel("Enter your email address");
 		emailLabel.setForeground(Color.WHITE);
 		emailLabel.setFont(font);
@@ -43,7 +63,8 @@ public class Register {
 		passwordLabel.setForeground(Color.WHITE);
 		passwordLabel.setFont(font);
 		
-		//Creates textfields for the user to enter their email/password
+		//Creates textfields for the user to enter their name/email/password
+		enterName = new JTextField(15);
 		enterEmail = new JTextField(15);
 		enterPassword = new JTextField(15);
 		
@@ -60,6 +81,13 @@ public class Register {
 		back.setRolloverIcon(new ImageIcon("back2.jpg"));
 		
 		//Creates the panels, sets the background to black, adds labels to panels
+		welcomePanel = new JPanel();
+		welcomePanel.setBackground(Color.black);
+		welcomePanel.add(welcomeLabel);
+		namePanel = new JPanel();
+		namePanel.setBackground(Color.black);
+		namePanel.add(nameLabel);
+		namePanel.add(enterName);
 		emailPanel = new JPanel();
 		emailPanel.setBackground(Color.BLACK);
 		emailPanel.add(emailLabel);
@@ -78,6 +106,8 @@ public class Register {
 		//Adds everything to one panel to be added to UI
 		everythingPanel = new JPanel();
 		everythingPanel.setLayout(new BoxLayout(everythingPanel, BoxLayout.Y_AXIS));
+		everythingPanel.add(welcomePanel);
+		everythingPanel.add(namePanel);
 		everythingPanel.add(emailPanel);
 		everythingPanel.add(passwordPanel);
 		everythingPanel.add(buttonPanel);
