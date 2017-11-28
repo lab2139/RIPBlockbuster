@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -73,12 +74,14 @@ public class Register {
 		go.setIcon(new ImageIcon("Go1.jpg"));
 		go.setBorder(null);
 		go.setRolloverIcon(new ImageIcon("Go2.jpg"));
+		go.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		//Creates the "Back" button
 		back = new JButton("Back");
 		back.setIcon(new ImageIcon("back1.jpg"));
 		back.setBorder(null);
 		back.setRolloverIcon(new ImageIcon("back2.jpg"));
+		back.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		//Creates the panels, sets the background to black, adds labels to panels
 		welcomePanel = new JPanel();
