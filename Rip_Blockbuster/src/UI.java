@@ -4,6 +4,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Logger;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -14,6 +16,7 @@ import javax.swing.*;
 public class UI {
 	private static JFrame frame;
 	private JPanel bannerPanel;
+	private static JPanel bottomPanel;
 	private JLabel bannerLabel;
 	private BufferedImage banner;
 	private static final int BANNER_WIDTH = 700;
@@ -21,16 +24,18 @@ public class UI {
 	
 	
 	/**
-	 * Contructs the frame, adds the banner to a label in the top panel. 
+	 * Contructor. 
 	 */
 	public UI(){
 		}
 	
+	/**
+	 * Contructs the frame, adds the banner to a label in the top panel. 
+	 * @return frame - the frame for overall UI
+	 */
 	public static JFrame createFrame(){
 		UI ui = new UI();
-		Login login = new Login();
-		Register register = new Register();
-		Movie movie = new Movie("https://images-na.ssl-images-amazon.com/images/M/MV5BOGNkMzliMGMtMDI5Ni00OTZkLTgyMTYtNzk5ZTY1NjVhYjVmXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SY1000_SX675_AL_.jpg", "title", "director", "genre", "actor", "rating", 3);
+		
 		//Creates the banner label. Grabs the banner image and assigns it to the banner label
 		//If image does not exist, print stack error
 		ui.bannerLabel = new JLabel();
@@ -52,6 +57,7 @@ public class UI {
 		ui.bannerPanel = new JPanel();
 		ui.bannerPanel.setLayout(new BoxLayout(ui.bannerPanel, BoxLayout.X_AXIS));
 		ui.bannerPanel.add(ui.bannerLabel);
+		ui.bannerPanel.setBackground(Color.black);
 		
 		//Creates the frame
 		frame = new JFrame("RIP BLOCKBUSTER");
@@ -59,24 +65,55 @@ public class UI {
 		frame.setResizable(true);
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.add(ui.bannerPanel);
-		frame.add(movie.getPanel());
+		frame.add(bottomPanel);
 		frame.pack();
+		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
 		frame.setVisible(true);
 		return frame;
 	}
 	
+	/**
+	 * Gets the frame
+	 * @return frame - The frame of the overall UI
+	 */
 	public static JFrame getFrame(){
 		return frame;
 	}
 	
-	public static void updateFrame(JFrame frame, JPanel panel){
-		frame = getFrame();
-		
+	/**
+	 * Updates the frame to show a new panel
+	 * 
+	 * @param panel - panel to be added
+	 */
+	public static JPanel updateBottomPanel(String page){
+		//Testing classes: 
+		if (page.equals("login")){
+			Login login = new Login();
+			bottomPanel = login.getPanel();
+		}
+		else if (page.equals("register")){
+			Register register = new Register();
+			bottomPanel = register.getPanel();
+		}
+		else if (page.equals("account")){
+			Account account = new Account();
+			bottomPanel = account.getPanel();
+		}
+		else if (page.equals("admin")){
+			Admin admin = new Admin();
+			bottomPanel = admin.getPanel();
+		}
+		else{
+			Home home = new Home();
+			bottomPanel = home.getPanel();
+		}
+		return bottomPanel;
 		
 	}
 	
 	public static void main(String[] args) {
+		updateBottomPanel("login");
 		createFrame();
 	}
 
