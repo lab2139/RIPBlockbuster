@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -26,8 +27,8 @@ public class Login{
 	private JPanel buttonPanel;
 	private JLabel usernameLabel;
 	private JLabel passwordLabel;
-	private JTextField username;
-	private JTextField password;
+	private JTextField enterUsername;
+	private JTextField enterPassword;
 	private JButton go;
 	private JButton signUp;
 	private Font font;
@@ -52,20 +53,22 @@ public class Login{
 		passwordLabel.setFont(font);
 		
 		//Creates textfields for the user to enter in their username/password
-		username = new JTextField(10);
-		password = new JTextField(10);
+		enterUsername = new JTextField(10);
+		enterPassword = new JTextField(10);
 		
 		//Creates a "Go" button from an image -> Goes to Home
 		go = new JButton();
 		go.setIcon(new ImageIcon("Go1.jpg"));
 		go.setBorder(null);
 		go.setRolloverIcon(new ImageIcon("Go2.jpg"));
+		go.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		//Creates a "Sign up" button from an image -> Goes to SignUp
 		signUp = new JButton();
 		signUp.setIcon(new ImageIcon("signup1.jpg"));
 		signUp.setBorder(null);
 		signUp.setRolloverIcon(new ImageIcon("signup2.jpg"));
+		signUp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		//Creates borders to be added to panels
 		usernameborder = new EmptyBorder(180, 0, 0, 0);
@@ -77,7 +80,7 @@ public class Login{
 		usernamePanel.setLayout(new FlowLayout());
 		usernamePanel.setBackground(Color.BLACK);
 		usernamePanel.add(usernameLabel);
-		usernamePanel.add(username);
+		usernamePanel.add(enterUsername);
 		adjustUsernamePanel = new JPanel(new BorderLayout());
 		adjustUsernamePanel.add(usernamePanel, BorderLayout.PAGE_END);
 		adjustUsernamePanel.setBackground(Color.BLACK);
@@ -85,7 +88,7 @@ public class Login{
 		passwordPanel = new JPanel();
 		passwordPanel.setBackground(Color.BLACK);
 		passwordPanel.add(passwordLabel);
-		passwordPanel.add(password);
+		passwordPanel.add(enterPassword);
 		passwordPanel.setBorder(passwordborder);
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
