@@ -1,13 +1,11 @@
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
 import javax.swing.*;
 
 /**
@@ -17,6 +15,7 @@ import javax.swing.*;
  */
 public class Home {
 	private static JPanel everythingPanel;
+	private JPanel logInSignUpPanel;
 	private JPanel searchPanel;
 	private JPanel recentlyAddedPanel;
 	private static JPanel recentlyAddedListPanel;
@@ -27,6 +26,9 @@ public class Home {
 	private JLabel popularLabel;
 	private JTextField enterSearch;
 	private JButton go;
+	private JButton logIn;
+	private JButton signUp;
+	private JButton logOut;
 	private Font font;
 	private Font largefont;
 	
@@ -80,6 +82,7 @@ public class Home {
 		go.setIcon(new ImageIcon("Go1.jpg"));
 		go.setBorder(null);
 		go.setRolloverIcon(new ImageIcon("Go2.jpg"));
+		go.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		
 		go.addActionListener(new ActionListener(){
 
@@ -90,7 +93,34 @@ public class Home {
 			
 		});
 		
+		//Creates "Login" button from image -> goes to Login page
+		//Only appears if user is logged in
+		logIn = new JButton();
+		logIn.setIcon(new ImageIcon("login1.jpg"));
+		logIn.setBorder(null);
+		logIn.setRolloverIcon(new ImageIcon("login2.jpg"));
+		logIn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		//Creates "Sign up" button -> goes to Register page
+		//Only appears if user is logged in
+		signUp = new JButton();
+		signUp.setIcon(new ImageIcon("signup1.jpg"));
+		signUp.setBorder(null);
+		signUp.setRolloverIcon(new ImageIcon("signup2.jpg"));
+		signUp.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
+		//Creates "Log Out" button -> goes to Home page
+		logOut = new JButton();
+		logOut.setIcon(new ImageIcon("logout1.jpg"));
+		logOut.setBorder(null);
+		logOut.setRolloverIcon(new ImageIcon("logout2.jpg"));
+		logOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		//Creates the panels, sets background to black, adds labels, textfield, and button to panels
+		logInSignUpPanel = new JPanel();
+		logInSignUpPanel.setBackground(Color.black);
+		logInSignUpPanel.add(signUp);
+		logInSignUpPanel.add(logIn);
 		searchPanel = new JPanel();
 		searchPanel.setLayout(new FlowLayout());
 		searchPanel.setBackground(Color.black);
@@ -114,6 +144,7 @@ public class Home {
 		everythingPanel = new JPanel();
 		everythingPanel.setLayout(new BoxLayout(everythingPanel, BoxLayout.Y_AXIS));
 		everythingPanel.setBackground(Color.BLACK);
+		everythingPanel.add(logInSignUpPanel);
 		everythingPanel.add(searchPanel);
 		everythingPanel.add(recentlyAddedPanel);
 		everythingPanel.add(recentlyAddedListPanel);
