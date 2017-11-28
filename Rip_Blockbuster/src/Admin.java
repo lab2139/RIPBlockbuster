@@ -1,9 +1,13 @@
+import javax.swing.*;
 
 public class Admin {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private static JPanel everythingPanel;
+	
+	public Admin(){
+		
 	}
-
+	
+	public static JPanel getPanel(){
+		return everythingPanel;
+	}
 }
