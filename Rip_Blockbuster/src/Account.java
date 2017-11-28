@@ -1,9 +1,13 @@
+import javax.swing.*;
 
 public class Account {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+	private static JPanel everythingPanel;
+	
+	public Account(){
+		
 	}
-
+	
+	public static JPanel getPanel(){
+		return everythingPanel;
+	}
 }
