@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -37,6 +38,7 @@ public class Movie {
 	private JLabel actorLabel;
 	private JLabel ratingLabel;
 	private JLabel quantityLabel;
+	private JButton reserve;
 	private BufferedImage moviePoster;
 	private Image moviePosterScaled;
 	private URL moviePosterURL;
@@ -48,6 +50,7 @@ public class Movie {
 	/**
 	 * Takes the picture url, title, director, genre, actor, rating, and stock, and that will be generated from the database, and sets up
 	 * a panel for the poster image to the left, and the movie info to the right. 
+	 * Adds a button to reserve the movie to pick up from the store.
 	 * 
 	 * @param picurl - The String containing the URL of the movie poster
 	 * @param title - The String of the movie title
@@ -105,6 +108,13 @@ public class Movie {
 		ratingLabel.setFont(font);
 		quantityLabel.setFont(font);
 		
+		//Create reserve button to reserve a movie
+		reserve = new JButton();
+		reserve.setIcon(new ImageIcon("reserve1.jpg"));
+		reserve.setBorder(null);
+		reserve.setRolloverIcon(new ImageIcon("reserve2.jpg"));
+		reserve.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		
 		//Create Panels
 		moviePanel = new JPanel();
 		moviePanel.setLayout(new FlowLayout());
@@ -123,6 +133,7 @@ public class Movie {
 		infoPanel.add(actorLabel);
 		infoPanel.add(ratingLabel);
 		infoPanel.add(quantityLabel);
+		infoPanel.add(reserve);
 		
 		//Add image panel and info panel to main panel
 		moviePanel.add(imagePanel);
