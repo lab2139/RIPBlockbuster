@@ -19,6 +19,7 @@ import javax.swing.border.EmptyBorder;
  */
 public class Register {
 	private static JPanel everythingPanel;
+	private JPanel namePanel;
 	private JPanel emailPanel;
 	private JPanel passwordPanel;
 	private JPanel buttonPanel;
