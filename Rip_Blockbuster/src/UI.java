@@ -30,7 +30,7 @@ public class UI {
 		UI ui = new UI();
 		Login login = new Login();
 		Register register = new Register();
-		Movie movie = new Movie("https://images-na.ssl-images-amazon.com/images/M/MV5BOGNkMzliMGMtMDI5Ni00OTZkLTgyMTYtNzk5ZTY1NjVhYjVmXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SY1000_SX675_AL_.jpg", "title", "director", "genre", "actor", "rating");
+		Movie movie = new Movie("https://images-na.ssl-images-amazon.com/images/M/MV5BOGNkMzliMGMtMDI5Ni00OTZkLTgyMTYtNzk5ZTY1NjVhYjVmXkEyXkFqcGdeQXVyNTAzMTY4MDA@._V1_SY1000_SX675_AL_.jpg", "title", "director", "genre", "actor", "rating", 3);
 		//Creates the banner label. Grabs the banner image and assigns it to the banner label
 		//If image does not exist, print stack error
 		ui.bannerLabel = new JLabel();
@@ -59,7 +59,7 @@ public class UI {
 		frame.setResizable(true);
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.add(ui.bannerPanel);
-		frame.add(register.getPanel());
+		frame.add(movie.getPanel());
 		frame.pack();
 		frame.setBackground(Color.BLACK);
 		frame.setVisible(true);
