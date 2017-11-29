@@ -89,9 +89,10 @@ public class UI {
 		frame.setResizable(true);
 		frame.setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 		frame.add(ui.bannerPanel);
+		
 		frame.add(bottomPanel);
+		frame.setPreferredSize(new Dimension(BANNER_WIDTH, 900));
 		frame.pack();
-		frame.setResizable(false);
 		frame.setBackground(Color.BLACK);
 		frame.setVisible(true);
 		return frame;
@@ -176,7 +177,7 @@ public class UI {
 	}
 
 	public static void main(String[] args) {
-		updateBottomPanel("home");
+		updateBottomPanel("admin");
 		createFrame();
 	}
 
