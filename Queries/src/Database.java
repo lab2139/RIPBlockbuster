@@ -19,7 +19,7 @@ public class Database {
       //STEP 3: Open a connection
       System.out.println("Connecting to database...");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
-      
+      RQ.AddUser(710, "James", "Jones", "910-111-1111", "abc1234email.com", "password");
    }catch(SQLException se){
       //Handle errors for JDBC
       se.printStackTrace();
