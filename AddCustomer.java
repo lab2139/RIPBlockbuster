@@ -89,7 +89,8 @@ public class AddCustomer {
 				String email = enterEmail.getText();
 				String phone = enterPhone.getText();
 				RQ.AddUser(first_name, last_name, phone, email);
-				JOptionPane.showMessageDialog(UI.frame, "User Added.");
+				String message = first_name + " is added to the database.";
+				JOptionPane.showMessageDialog(UI.frame, message);
 			}
 			
 		});
