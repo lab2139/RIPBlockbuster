@@ -1,7 +1,7 @@
 import java.sql.*;
 
 /**
- * @author JustinsMacBook
+ * @author JustinSaunders
  *Class to query the SQL server
  *Manipulates and calls data from webdev.cislabs.uncw.edu server
  */
