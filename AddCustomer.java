@@ -3,6 +3,9 @@ import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
@@ -16,7 +19,7 @@ import javax.swing.border.LineBorder;
  */
 public class AddCustomer {
 	public static JPanel everythingPanel;
-	private JLabel addCustomerPanel;
+	//private JLabel addCustomerPanel;
 	private JPanel addCustomerLabelPanel;
 	private JPanel firstNamePanel;
 	private JPanel lastNamePanel;
@@ -76,6 +79,20 @@ public class AddCustomer {
 		goAddCustomer.setBorder(null);
 		goAddCustomer.setRolloverIcon(go2);
 		goAddCustomer.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		goAddCustomer.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String first_name = enterFirstName.getText();
+				String last_name = enterLastName.getText();
+				String email = enterEmail.getText();
+				String phone = enterPhone.getText();
+				RQ.AddUser(first_name, last_name, phone, email);
+				JOptionPane.showMessageDialog(UI.frame, "User Added.");
+			}
+			
+		});
 		
 		//TextFields
 		enterFirstName = new JTextField(25);
@@ -84,9 +101,9 @@ public class AddCustomer {
 		enterPhone = new JTextField(25);
 		
 		//Create Panels
-		addCustomerPanel.setLayout(new BoxLayout(addCustomerPanel, BoxLayout.Y_AXIS));
-		addCustomerPanel.setBackground(Color.BLACK);
-		addCustomerPanel.setBorder(new LineBorder(Color.white, 3));
+		//addCustomerPanel.setLayout(new BoxLayout(addCustomerPanel, BoxLayout.Y_AXIS));
+		//addCustomerPanel.setBackground(Color.BLACK);
+		//addCustomerPanel.setBorder(new LineBorder(Color.white, 3));
 		addCustomerLabelPanel = new JPanel();
 		addCustomerLabelPanel.setBackground(Color.BLACK);
 		firstNamePanel = new JPanel();
@@ -112,19 +129,16 @@ public class AddCustomer {
 		phonePanel.add(enterPhone);
 		addCustomerButtonPanel.add(goAddCustomer);
 		
-		//Add panels to encompassing panel
-		addCustomerPanel.add(addCustomerLabelPanel);
-		addCustomerPanel.add(firstNamePanel);
-		addCustomerPanel.add(lastNamePanel);
-		addCustomerPanel.add(emailPanel);
-		addCustomerPanel.add(phonePanel);
-		addCustomerPanel.add(addCustomerButtonPanel);
-		
 		//Adds everything to one panel to be added to the UI
 		everythingPanel = new JPanel();
 		everythingPanel.setLayout(new BoxLayout(everythingPanel, BoxLayout.Y_AXIS));
 		everythingPanel.setBackground(Color.BLACK);
-		everythingPanel.add(addCustomerPanel);
+		everythingPanel.add(addCustomerLabelPanel);
+		everythingPanel.add(firstNamePanel);
+		everythingPanel.add(lastNamePanel);
+		everythingPanel.add(emailPanel);
+		everythingPanel.add(phonePanel);
+		everythingPanel.add(addCustomerButtonPanel);
 	}
 	
 	/**
