@@ -1,4 +1,3 @@
-package projPack;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Font;
@@ -117,6 +116,7 @@ public class Account {
 		favoriteMoviesLabelPanel.setBackground(Color.black);
 		favoriteMoviesLabelPanel.add(favoriteMoviesLabel);
 		moviesPanel = new JPanel();
+		moviesPanel.setBackground(Color.black);
 		
 		//Adds everything to one panel to be added to the UI
 		everythingPanel = new JPanel();
