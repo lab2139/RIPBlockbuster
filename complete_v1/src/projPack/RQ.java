@@ -491,6 +491,51 @@ public class RQ {
 	          //Handle errors for Class.forName
 	          e.printStackTrace();}		
 	}
+	
+	/**
+	 * Shows the information on file for a given customer
+	 * @param email - email of the customer for lookup
+	 * @return - result set of client's information
+	 */
+	public static ResultSet ViewCustomer(String email) {
+		try {
+			  String sql = "SELECT * from cust where email = " + "\'" + email + "\'";
+		    	  Statement stmt = data.conn.createStatement();
+		    	  rs = stmt.executeQuery(sql);	   
+		      }catch(SQLException se){
+		          //Handle errors for JDBC
+		          se.printStackTrace();
+		       }catch(Exception e){
+		          //Handle errors for Class.forName
+		          e.printStackTrace();}
+		return rs;	
+	}
+	
+	/**
+	 * Shows the current checked out movie for a given customer
+	 * @param email - email of the customer for lookup
+	 * @return - string movie title
+	 */
+	public static String ViewRented(String email) {
+		String rented = "";
+		try {
+			  String sql = "SELECT checked_out from cust where email = " + "\'" + email + "\'";
+		    	  Statement stmt = data.conn.createStatement();
+		    	  rs = stmt.executeQuery(sql);	
+		    	  while(rs.next()) {
+		    		  rented = rs.getString("checked_out");
+		    	  }
+		    	  if(rented == null) {
+		    		  rented = "No movie currently rented.";
+		    	  }
+		      }catch(SQLException se){
+		          //Handle errors for JDBC
+		          se.printStackTrace();
+		       }catch(Exception e){
+		          //Handle errors for Class.forName
+		          e.printStackTrace();}
+		return rented;	
+	}
 }
 
 //End class
