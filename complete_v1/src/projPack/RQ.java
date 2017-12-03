@@ -1,3 +1,4 @@
+package projPack;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -250,14 +251,9 @@ public class RQ {
 	    		  high_id = rs.getInt("c_id");
 	    	  }
 	    	  int C_ID = high_id + 1;
-	    	  if(c_first != "" && c_last != "" && phone_num != "" && email != "") {
+	    	  
 	    	  sql = "INSERT INTO cust VALUES(" + C_ID + ", \'" + c_first + "\', " + "\'" + c_last + "\', " +  "\'" + phone_num + "\', " + "\'" + email +"\', " + "null)";	      	      
-	    	  stmt.executeUpdate(sql);
-	    	  JOptionPane.showMessageDialog(UI.frame, "Thank you, " + email + " has been added.");
-	    	  }
-	    	  else {
-	    		  JOptionPane.showMessageDialog(UI.frame, "Error, please try again.");
-	    	  }
+		      stmt.executeUpdate(sql);
 	      //Clean-up environment
 	      stmt.close();
 	      }catch(SQLException se){
@@ -560,5 +556,3 @@ public class RQ {
 		return rented;	
 	}
 }
-
-//End class
