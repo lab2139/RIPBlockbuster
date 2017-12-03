@@ -1,0 +1,202 @@
+//Set image icons for go images
+		ImageIcon go1 = new ImageIcon("Go1.jpg");
+		ImageIcon go2 = new ImageIcon("Go2.jpg");
+		
+		//Go button to rent movie
+		goRent = new JButton();
+		goRent.setIcon(go1);
+		goRent.setBorder(null);
+		goRent.setRolloverIcon(go2);
+		goRent.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+		goRent.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String email = enterRentEmail.getText();
+				String title = movie.getTitle();
+				RQ.CheckOut(email, title);
+				String message = email + " has rented " + title;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterRentEmail.setText("");
+			}
+			
+		});
+		
+		//Go button to return movie
+		goReturn = new JButton();
+		goReturn.setIcon(go1);
+		goReturn.setBorder(null);
+		goReturn.setRolloverIcon(go2);
+		goReturn.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String email = enterReturnedEmail.getText();
+				String title = movie.getTitle();
+				RQ.CheckIn(email, title);
+				String message = email + " has returned " + title;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterReturnedEmail.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie url
+		goUrl = new JButton();
+		goUrl.setIcon(go1);
+		goUrl.setBorder(null);
+		goUrl.setRolloverIcon(go2);
+		goUrl.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newUrl = enterUrl.getText();
+				RQ.EditURL(title, newUrl);
+				JOptionPane.showMessageDialog(UI.frame, "The url has been updated.");
+				enterUrl.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie title
+		goTitle = new JButton();
+		goTitle.setIcon(go1);
+		goTitle.setBorder(null);
+		goTitle.setRolloverIcon(go2);
+		goTitle.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newTitle = enterTitle.getText();
+				RQ.EditTitle(title, newTitle);
+				String message = "The title has been updated to " + newTitle;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterTitle.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie director
+		goDirector = new JButton();
+		goDirector.setIcon(go1);
+		goDirector.setBorder(null);
+		goDirector.setRolloverIcon(go2);
+		goDirector.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newDirector = enterDirector.getText();
+				RQ.EditDirector(title, newDirector);
+				String message = "The director has been updated to " + newDirector;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterDirector.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie genre
+		goGenre = new JButton();
+		goGenre.setIcon(go1);
+		goGenre.setBorder(null);
+		goGenre.setRolloverIcon(go2);
+		goGenre.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newGenre = enterGenre.getText();
+				RQ.EditGenre(title, newGenre);
+				String message = "The genre has been updated to " + newGenre;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterGenre.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie star
+		goStar = new JButton();
+		goStar.setIcon(go1);
+		goStar.setBorder(null);
+		goStar.setRolloverIcon(go2);
+		goStar.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newStar = enterStar.getText();
+				RQ.EditLead(title, newStar);
+				String message = "The star has been updated to " + newStar;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterStar.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie rating
+		goRating = new JButton();
+		goRating.setIcon(go1);
+		goRating.setBorder(null);
+		goRating.setRolloverIcon(go2);
+		goRating.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newRating = enterRating.getText();
+				RQ.EditRating(title, newRating);
+				String message = "The rating has been updated to " + newRating;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterRating.setText("");
+			}
+			
+		});
+		
+		//Go button to edit movie quantity
+		goQuantity = new JButton();
+		goQuantity.setIcon(go1);
+		goQuantity.setBorder(null);
+		goQuantity.setRolloverIcon(go2);
+		goQuantity.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				String newQuantity = enterQuantity.getText();
+				int newQty = Integer.parseInt(newQuantity);
+				RQ.EditQty(title, newQty);
+				String message = "The quantity has been updated to" + newQuantity;
+				JOptionPane.showMessageDialog(UI.frame, message);
+				enterQuantity.setText("");
+			}
+			
+		});
+		
+		//Go button to delete movie from the database
+		goDelete = new JButton();
+		goDelete.setIcon(go1);
+		goDelete.setBorder(null);
+		goDelete.setRolloverIcon(go2);
+		goDelete.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				String title = movie.getTitle();
+				RQ.RemoveMovie(title);
+				String message = title + " has been removed from the database.";
+				JOptionPane.showMessageDialog(UI.frame, message);
+			}
+			
+		});
