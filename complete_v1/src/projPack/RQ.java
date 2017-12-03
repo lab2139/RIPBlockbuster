@@ -1,4 +1,7 @@
 import java.sql.*;
+import java.util.ArrayList;
+
+import javax.swing.JOptionPane;
 
 /**
  * @author JustinSaunders
@@ -52,9 +55,6 @@ public class RQ {
 	    	  String sql;
 	    	  sql = "SELECT * FROM cust ORDER BY c_id";
 	    	  rs = stmt.executeQuery(sql);
-	    	  while(rs.next()) {
-	    		  System.out.println(rs.getString("c_first"));
-	    	  }
 	      }catch(SQLException se) {
 	    	      //Handle errors for JDBC
 	          se.printStackTrace();
@@ -250,8 +250,14 @@ public class RQ {
 	    		  high_id = rs.getInt("c_id");
 	    	  }
 	    	  int C_ID = high_id + 1;
+	    	  if(c_first != "" && c_last != "" && phone_num != "" && email != "") {
 	    	  sql = "INSERT INTO cust VALUES(" + C_ID + ", \'" + c_first + "\', " + "\'" + c_last + "\', " +  "\'" + phone_num + "\', " + "\'" + email +"\', " + "null)";	      	      
-	    	  stmt.executeUpdate(sql);	   
+	    	  stmt.executeUpdate(sql);
+	    	  JOptionPane.showMessageDialog(UI.frame, "Thank you, " + email + " has been added.");
+	    	  }
+	    	  else {
+	    		  JOptionPane.showMessageDialog(UI.frame, "Error, please try again.");
+	    	  }
 	      //Clean-up environment
 	      stmt.close();
 	      }catch(SQLException se){
@@ -277,7 +283,14 @@ public class RQ {
 		  temp_set = SelectTitle(title);
 		  while (temp_set.next()) {
 		  int quantity = temp_set.getInt("qty");
-		  if (quantity > 0) {
+		  ArrayList<String> userList = new ArrayList<String>();
+		  ResultSet userSet = GetCustomers();
+		  while(userSet.next()) {
+			  String userEmail  = userSet.getString("email");
+			  userList.add(userEmail);
+		  }
+
+		  if (quantity > 0 && userList.contains(email)) {
 			Statement stmt = data.conn.createStatement();
 			int new_quantity = quantity - 1;
 			String sql = "UPDATE cust set checked_out = " +  "\'" + title + "\'" +  " WHERE email = " + "\'" + email + "\'";
@@ -288,7 +301,7 @@ public class RQ {
 	      //Clean-up environment
 	      stmt.close();}
 		  else {
-			  output = "Out of Stock.";
+			  output = "Out of stock or invalid email address. Please try again.";
 		  }}
 	      }catch(SQLException se){
 	          //Handle errors for JDBC
@@ -312,16 +325,26 @@ public class RQ {
 		  temp_set = SelectTitle(title);
 		  while (temp_set.next()) {
 		  int quantity = temp_set.getInt("qty");
+		  ArrayList<String> userList = new ArrayList<String>();
+		  ResultSet userSet = GetCustomers();
+		  while(userSet.next()) {
+			  String userEmail  = userSet.getString("email");
+			  userList.add(userEmail);
+		  }
+
+		  if (userList.contains(email)) {
 			Statement stmt = data.conn.createStatement();
 			int new_quantity = quantity + 1;
-			String sql = "UPDATE cust set checked_out = null WHERE email = " + "\'" + email + "\'";
+			String sql = "UPDATE cust set checked_out = null " + " WHERE email = " + "\'" + email + "\'";
 	    	  	stmt.executeUpdate(sql);	   
 	    	  	sql = "UPDATE movies set qty = " + new_quantity + " WHERE title = " + "\'" + title + "\'";
 	    	  	stmt.executeUpdate(sql);
-	    	  	output = "Movie Returned; We thank you for your patronage";
+	    	  	output = "Thank you.";
 	      //Clean-up environment
 	      stmt.close();}
-
+		  else {
+			  output = "Invalid Email.";
+		  }}
 	      }catch(SQLException se){
 	          //Handle errors for JDBC
 	          se.printStackTrace();
