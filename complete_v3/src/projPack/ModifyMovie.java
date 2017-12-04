@@ -19,7 +19,7 @@ import javax.swing.*;
  * Allows the admin to set who has this movie rented, and who has returned it.
  * Allows the admin to edit the movie information.
  * Allows the admin to delete the movie from the database
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class ModifyMovie {
@@ -403,6 +403,7 @@ public class ModifyMovie {
 		moviePanel = new JPanel();
 		moviePanel.setBackground(Color.black);
 		
+		//Constructs the Bottom Panel Layout
 		botPanel = new JPanel();
 		botPanel.setBackground(Color.BLACK);
 		botPanel.setLayout(new BoxLayout(botPanel, BoxLayout.X_AXIS));
@@ -413,74 +414,87 @@ public class ModifyMovie {
 		botRightPanel.setBackground(Color.BLACK);
 		botRightPanel.setLayout(new BoxLayout(botRightPanel, BoxLayout.Y_AXIS));
 		
+		//Rent Fill In
 		rentPanel = new JPanel();
 		rentPanel.setBackground(Color.black);
 		rentPanel.add(rentLabel);
 		rentPanel.add(enterRentEmail);
 		rentPanel.add(goRent);
 		
+		//Return Fill IN
 		returnPanel = new JPanel();
 		returnPanel.setBackground(Color.black);
 		returnPanel.add(returnLabel);
 		returnPanel.add(enterReturnedEmail);
 		returnPanel.add(goReturn);
 		
+		//Header for Edit Section
 		editLabelPanel = new JPanel();
 		editLabelPanel.setBackground(Color.BLACK);
 		editLabelPanel.add(editLabel);
 		
+		//URL Fill In
 		editUrlPanel = new JPanel();
 		editUrlPanel.setBackground(Color.BLACK);
 		editUrlPanel.add(urlLabel);
 		editUrlPanel.add(enterUrl);
 		editUrlPanel.add(goUrl);
 		
+		//Title Fill In
 		editTitlePanel = new JPanel();
 		editTitlePanel.setBackground(Color.BLACK);
 		editTitlePanel.add(titleLabel);
 		editTitlePanel.add(enterTitle);
 		editTitlePanel.add(goTitle);
 		
+		//Director Fill In
 		editDirectorPanel = new JPanel();
 		editDirectorPanel.setBackground(Color.BLACK);
 		editDirectorPanel.add(directorLabel);
 		editDirectorPanel.add(enterDirector);
 		editDirectorPanel.add(goDirector);
 		
+		//Genre Fill In
 		editGenrePanel = new JPanel();
 		editGenrePanel.setBackground(Color.BLACK);
 		editGenrePanel.add(genreLabel);
 		editGenrePanel.add(enterGenre);
 		editGenrePanel.add(goGenre);
 		
+		//Star Fill In
 		editStarPanel = new JPanel();
 		editStarPanel.setBackground(Color.BLACK);
 		editStarPanel.add(starLabel);
 		editStarPanel.add(enterStar);
 		editStarPanel.add(goStar);
 		
+		//Rating Fill In
 		editRatingPanel = new JPanel();
 		editRatingPanel.setBackground(Color.black);
 		editRatingPanel.add(ratingLabel);
 		editRatingPanel.add(enterRating);
 		editRatingPanel.add(goRating);
 		
+		//Quantity Fill In
 		editQuantityPanel = new JPanel();
 		editQuantityPanel.setBackground(Color.black);
 		editQuantityPanel.add(quantityLabel);
 		editQuantityPanel.add(enterQuantity);
 		editQuantityPanel.add(goQuantity);
 		
+		//Delete Fill In
 		deletePanel = new JPanel();
 		deletePanel.setBackground(Color.BLACK);
 		deletePanel.add(deleteLabel);
 		deletePanel.add(goDelete);
 		
+		//Adds Movie Image to ModifyMovie
 		i_movie = SearchBar.movieIcon[UI.movieID].moviePosterScaled;
 		i_movie.getScaledInstance(200, 320, Image.SCALE_SMOOTH);
-		
 		jl_movieImage = new JLabel(new ImageIcon(i_movie));
 		
+		
+		//Builds the finalize
 		everythingPanel = new JPanel();
 		everythingPanel.setLayout(new BoxLayout(everythingPanel, BoxLayout.Y_AXIS));
 		everythingPanel.setBackground(Color.black);
@@ -509,6 +523,9 @@ public class ModifyMovie {
 		
 	}
 	
+	/**
+	 * Updates the Quantity on the modifymovie page
+	 */
 	public void updateQuant()
 	{
 		rs = RQ.SelectTitle(movieTitle);
@@ -532,6 +549,10 @@ public class ModifyMovie {
 			SearchBar.movieIcon[UI.movieID].quantity.setText("Out of Stock");
 	}
 	
+	/**
+	 * Used to Update UI to ModifyMovie page
+	 * @return returns the ModifyMovie UI
+	 */
 	public JPanel getPanel(){
 		return everythingPanel;
 	}

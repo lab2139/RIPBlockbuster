@@ -10,7 +10,7 @@ import javax.swing.*;
 
 /**
  * Displays customer information
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class ViewCustomer {

@@ -18,7 +18,7 @@ import java.util.*;
  *displays and hides movies as you change the search text,
  *as well as provides links to each movie's modify file to change
  *information about the film
- * @author davidjohnson
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 

@@ -15,7 +15,7 @@ import javax.swing.*;
  * Page to let admin accounts add movies to the database, remove movies from a database, 
  * add popular movies to the home page, remove popular movies from the home page
  * add recently added movies to the home page, and remove recently added movies from the database
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class AddCustomer {
@@ -120,9 +120,6 @@ public class AddCustomer {
 		enterPhone = new JTextField("", 25);
 		
 		//Create Panels
-		//addCustomerPanel.setLayout(new BoxLayout(addCustomerPanel, BoxLayout.Y_AXIS));
-		//addCustomerPanel.setBackground(Color.BLACK);
-		//addCustomerPanel.setBorder(new LineBorder(Color.white, 3));
 		addCustomerLabelPanel = new JPanel();
 		addCustomerLabelPanel.setBackground(Color.BLACK);
 		firstNamePanel = new JPanel();
@@ -161,8 +158,8 @@ public class AddCustomer {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Used to update UI to AddCustomer page
+	 * @return returns the AddCustomer UI
 	 */
 	public static JPanel getPanel(){
 		return everythingPanel;

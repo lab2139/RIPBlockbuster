@@ -6,6 +6,7 @@ import java.util.ArrayList;
  * @author JustinSaunders
  *Class to query the SQL server
  *Manipulates and calls data from webdev.cislabs.uncw.edu server
+ *@author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  */
 public class RQ {
 

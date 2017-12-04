@@ -12,7 +12,7 @@ import javax.swing.*;
 
 /**
  * View popular movies and recently added movies. Search for a specific movie that you want to rent.
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class Home {

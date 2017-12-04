@@ -16,7 +16,7 @@ import javax.swing.border.LineBorder;
  * Page to let admin accounts add movies to the database, remove movies from a database, 
  * add popular movies to the home page, remove popular movies from the home page
  * add recently added movies to the home page, and remove recently added movies from the database
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class AddMovie {
@@ -194,8 +194,8 @@ public class AddMovie {
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Used to update UI to AddMovie page
+	 * @return returns the AddMovie UI
 	 */
 	public static JPanel getPanel(){
 		return everythingPanel;

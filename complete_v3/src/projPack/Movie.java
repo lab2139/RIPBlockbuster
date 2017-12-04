@@ -20,7 +20,7 @@ import javax.swing.*;
 
 /**
  * Creates a panel for movie poster picture, title, director, genre, lead actor, rating, and number of inventory
- * @author laurenblatchford
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
  *
  */
 public class Movie {
@@ -103,9 +103,9 @@ public class Movie {
 				moviePoster = ImageIO.read(moviePosterURL);
 				moviePosterScaled = moviePoster.getScaledInstance(POSTER_WIDTH, POSTER_HEIGHT, Image.SCALE_SMOOTH);
 			} catch (MalformedURLException ex){
-				//System.out.println("Malformed URL");
+				System.out.println("Malformed URL");
 			} catch (IOException iox){
-				//System.out.println("Cannot load file");
+				System.out.println("Cannot load file");
 			}
 		}
 				
@@ -172,8 +172,4 @@ public class Movie {
 	public JPanel getPanel(){
 		return moviePanel;
 	}
-	/**
-	 * returns a string of the movie title
-	 * @return titleString - The title of the movie
-	 */
 }

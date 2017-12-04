@@ -15,8 +15,8 @@ import java.sql.*;
 
 /**
  * Creates a template UI for all other classes to add panels and elements.
- * @author Lauren Blatchford
- */
+ * @author davidjohnson justinsaunders kellykolb hayleystueber laurenblatchford
+ */ 
 public class UI {
 	public static JFrame frame;
 	private JPanel bannerPanel;
